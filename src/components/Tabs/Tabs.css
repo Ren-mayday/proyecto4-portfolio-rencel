@@ -1,0 +1,110 @@
+#experience-education {
+  height: 100vh;
+  margin-top: 150px;
+}
+
+.tabs-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tabs-container {
+  background: var(--green-dark);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  border-bottom: 2px solid var(--green-deep);
+}
+
+.tab-btn {
+  padding: 1rem 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--primary-white);
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: var(--green-accent);
+  background-color: rgba(0, 145, 110, 0.2);
+}
+
+.tab-btn.active {
+  color: var(--green-bright);
+  border-bottom: 2px solid var(--green-bright);
+  margin-bottom: -2px;
+}
+
+.tab-content {
+  display: none;
+  padding: 2rem;
+  color: var(--primary-white);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.experience-item,
+.education-item {
+  margin-bottom: 2rem;
+}
+
+.experience-item h3,
+.education-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--green-bright);
+}
+
+.company,
+.institution {
+  font-weight: 500;
+  color: var(--green-soft);
+  margin: 0.25rem 0;
+}
+
+.date {
+  color: var(--green-accent);
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.experience-item ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.experience-item li {
+  margin: 0.5rem 0;
+  color: var(--primary-white);
+}
+
+.education-item .description {
+  margin: 0.5rem 0;
+  color: var(--primary-white);
+}
+
+@media (max-width: 768px) {
+  .tabs-section {
+    padding: 1rem;
+  }
+
+  .tab-btn {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .tab-content {
+    padding: 1.5rem;
+  }
+}

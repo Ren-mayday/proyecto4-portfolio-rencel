@@ -1,0 +1,13 @@
+footer {
+  background-color: var(--primary-black);
+  height: 100px;
+  bottom: 0;
+}
+.footer-content {
+  display: flex;
+  justify-content: center;
+  padding: var(--prdc-padding-m);
+}
+p {
+  color: var(--primary-white);
+}

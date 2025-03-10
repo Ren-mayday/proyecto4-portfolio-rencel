@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+  scroll-behavior: smooth;
+}
+
+:root {
+  /* Colores base */
+  --primary-black: #0a0a0a; /* Slightly softer than pure black for background */
+  --primary-white: #ffffff; /* Pure white for main text */
+
+  --green-bright: #00ff9d; /* Bright mint green for primary buttons/highlights */
+  --green-deep: #00916e; /* Deeper green for hover states */
+  --green-soft: #4ecca3; /* Softer green for secondary elements */
+  --green-dark: #1a3c34; /* Dark green for subtle backgrounds/cards */
+  --green-accent: #96ffb2; /* Light mint for special accents */
+
+  /* SPACING */
+  --prdc-margin-xs: 5px;
+  --prdc-margin-s: 10px;
+  --prdc-margin-m: 20px;
+  --prdc-margin-l: 30px;
+  --prdc-margin-xl: 50px;
+  --prdc-margin-xxl: 100px;
+
+  --prdc-padding-xs: 5px;
+  --prdc-padding-s: 10px;
+  --prdc-padding-m: 20px;
+  --prdc-padding-l: 30px;
+  --prdc-padding-xl: 50px;
+  --prdc-padding-xxl: 100px;
+
+  --prdc-gap-xs: 5px;
+  --prdc-gap-s: 10px;
+  --prdc-gap-m: 20px;
+  --prdc-gap-l: 30px;
+  --prdc-gap-xl: 50px;
+  --prdc-gap-xxl: 80px;
+}
+
+body {
+  background-image: url("/assets/dark-wood.png");
+  background-color: var(--primary-black);
+}
+
+section {
+  scroll-margin-top: 100px; /* Adjust this value based on your header height */
+}

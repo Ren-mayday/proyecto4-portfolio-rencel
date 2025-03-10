@@ -1,0 +1,118 @@
+h2,
+h3 {
+  /* Existing styles */
+  font-size: 1.5rem;
+  margin-bottom: var(--prdc-margin-m);
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+  text-align: center;
+  color: var(--primary-white);
+  margin: var(--prdc-margin-l);
+}
+
+.my-skills-section {
+  margin: var(--prdc-margin-l);
+}
+.about-me-text {
+  color: var(--primary-white);
+  margin-top: var(--prdc-margin-m);
+  max-width: 800px; /* Limit the maximum width */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  line-height: 1.6; /* Improve readability with better line spacing */
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all child elements horizontally */
+  margin: var(--prdc-margin-m);
+  padding: var(--prdc-padding-m);
+  max-width: 1200px; /* Limit overall section width */
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow for wood background */
+}
+
+.skills-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--prdc-gap-xl);
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2); /* Very subtle container background */
+  border-radius: 8px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.skill-icon-html,
+.skill-icon-css,
+.skill-icon-js,
+.skill-icon-vs-code,
+.skill-icon-gitHub,
+.skill-icon-vite,
+.skill-icon-figma {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); /* Subtle glow */
+  transition: filter 0.3s ease;
+}
+
+.skill-item:hover .skill-icon-html,
+.skill-item:hover .skill-icon-css,
+.skill-item:hover .skill-icon-js,
+.skill-item:hover .skill-icon-vs-code,
+.skill-item:hover .skill-icon-gitHub,
+.skill-item:hover .skill-icon-vite,
+.skill-item:hover .skill-icon-figma {
+  filter: drop-shadow(
+    0 0 8px rgba(255, 255, 255, 0.5)
+  ); /* Enhanced glow on hover */
+}
+
+.skill-icon-gitHub {
+  background-color: var(--primary-white);
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.4); /* Subtle background */
+  border-radius: 6px;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  background-color: rgba(0, 0, 0, 0.6); /* Darker on hover */
+}
+
+.skill-name {
+  color: var(--primary-white);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .section-content {
+    padding: var(--prdc-padding-s);
+  }
+
+  .about-me-text {
+    max-width: 90%; /* Narrower on mobile */
+  }
+}
+
+@media (max-width: 425px) {
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: var(--prdc-gap-l);
+  }
+}
