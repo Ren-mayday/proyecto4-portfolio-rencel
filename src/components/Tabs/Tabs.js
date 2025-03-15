@@ -54,41 +54,49 @@ const Tabs = () => {
     const targetContent = document.getElementById(tabId);
     targetContent.classList.add("active");
 
-    // Scroll en la tab section
-    const headerHeight = document.querySelector(".main-header").offsetHeight;
-    const tabsPosition =
-      section.getBoundingClientRect().top + window.scrollY - headerHeight;
+    // Sólo scroll si no se trata de una navegación de cabecera
+    if (!window.isTabNavigationFromHeader) {
+      // Scroll en la tab section
+      const headerHeight = document.querySelector(".main-header").offsetHeight;
+      const tabsPosition =
+        section.getBoundingClientRect().top + window.scrollY - headerHeight;
 
-    window.scrollTo({
-      top: tabsPosition,
-      behavior: "smooth",
-    });
+      window.scrollTo({
+        top: tabsPosition,
+        behavior: "smooth",
+      });
+    }
+
+    // Reset flag
+    window.isTabNavigationFromHeader = false;
   };
 
   experienceBtn.addEventListener("click", handleTabClick);
   educationBtn.addEventListener("click", handleTabClick);
 
-  // Handle direct navigation to tabs from header
+  // Navegación directa a las pestañas desde la cabecera
   window.addEventListener("DOMContentLoaded", () => {
-    // Check if URL has a hash that matches our tabs
+    // Verificar si URL tiene hash que coincide con las tabs
     const hash = window.location.hash;
     if (hash === "#experience" || hash === "#education") {
-      // Remove the # from the hash
+      // Quitar #
       const tabId = hash.substring(1);
 
-      // Find the button with the matching data-tab attribute
+      // Buscar el botón con el atributo data-tab correspondiente
       const button = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
 
-      // If found, simulate a click
+      // Si se encuentra, simular el click
       if (button) {
+        // Set flag para evitar el desplazamiento adicional
+        window.isTabNavigationFromHeader = true;
         setTimeout(() => {
           button.click();
-        }, 100); // Short delay to ensure the page has fully loaded
+        }, 100); // delay para asegurar que la página se ha cargado completamente
       }
     }
   });
 
-  // Append everything
+  // Append todo los elementos
   tabButtons.appendChild(experienceBtn);
   tabButtons.appendChild(educationBtn);
   tabsContainer.appendChild(tabButtons);
