@@ -1,7 +1,5 @@
 import "./Header.css";
 
-import "./Header.css";
-
 const Header = () => {
   const header = document.createElement("header");
   header.className = "main-header";
