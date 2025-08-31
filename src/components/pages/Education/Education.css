@@ -1,7 +1,62 @@
+/* src/components/pages/Education/Education.css */
+
+/* ==== CLASES ORIGINALES ==== */
 .studies-title {
   font-size: 1.5rem;
 }
 
 .institution-name {
   font-size: 1.3rem;
+}
+
+/* ==== ESTRUCTURA DE LA SECCIÓN ==== */
+.education-section {
+  padding: 48px 16px;
+}
+
+.education-section h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* ==== CONTENEDOR DE ITEMS ==== */
+.education-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+/* ==== ITEM INDIVIDUAL ==== */
+.education-item {
+  display: grid;
+  gap: 4px;
+  padding: 12px 16px;
+  border-left: 4px solid #00ff9d; /* un toque visual */
+  background: #1a1a1a; /* fondo oscuro */
+  border-radius: 8px;
+}
+
+.education-item h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.education-item p {
+  margin: 0;
+  color: #ddd;
+}
+
+.education-item span {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* ==== SCROLL OFFSET PARA MENÚ ANCLADO ==== */
+section {
+  scroll-margin-top: 96px; /* para que no tape el header */
 }

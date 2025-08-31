@@ -1,18 +1,38 @@
-import "./Main.css";
-import Hero from "../Hero/Hero.js";
+// src/components/Main/Main.js
 import AboutMe from "../pages/AboutMe/AboutMe.js";
-import Tabs from "../Tabs/Tabs.js";
+import Experience from "../pages/Experience/Experience.js";
+import Education from "../pages/Education/Education.js";
 import Projects from "../pages/Projects/Projects.js";
 
 const Main = () => {
   const main = document.createElement("main");
   main.className = "main-content";
 
-  // Append all sections in order
-  main.appendChild(Hero());
-  main.appendChild(AboutMe());
-  main.appendChild(Tabs());
-  main.appendChild(Projects());
+  const sections = [
+    ["AboutMe", AboutMe],
+    ["Experience", Experience],
+    ["Education", Education],
+    ["Projects", Projects],
+  ];
+
+  sections.forEach(([name, fn]) => {
+    try {
+      if (typeof fn !== "function") {
+        const warn = document.createElement("pre");
+        warn.textContent = `⚠ ${name} no exporta una función por defecto.`;
+        warn.style.color = "orange";
+        main.appendChild(warn);
+        return;
+      }
+      const node = fn();
+      main.appendChild(node);
+    } catch (err) {
+      const errBox = document.createElement("pre");
+      errBox.textContent = `❌ Error en ${name}: ${err.message}`;
+      errBox.style.color = "red";
+      main.appendChild(errBox);
+    }
+  });
 
   return main;
 };

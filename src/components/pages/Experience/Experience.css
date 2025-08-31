@@ -1,7 +1,13 @@
-.job-position-title {
-  font-size: 1.5rem;
+/* imita el wrapper .section-content para Experience */
+.experience-section .experience-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: var(--prdc-padding-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.15);
 }
-
-.company-name {
-  font-size: 1.3rem;
+.experience-section h2 {
+  text-align: center;
+  margin-bottom: var(--prdc-margin-l);
 }

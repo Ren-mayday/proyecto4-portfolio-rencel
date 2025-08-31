@@ -58,8 +58,7 @@ const Tabs = () => {
     if (!window.isTabNavigationFromHeader) {
       // Scroll en la tab section
       const headerHeight = document.querySelector(".main-header").offsetHeight;
-      const tabsPosition =
-        section.getBoundingClientRect().top + window.scrollY - headerHeight;
+      const tabsPosition = section.getBoundingClientRect().top + window.scrollY - headerHeight;
 
       window.scrollTo({
         top: tabsPosition,
@@ -74,24 +73,45 @@ const Tabs = () => {
   experienceBtn.addEventListener("click", handleTabClick);
   educationBtn.addEventListener("click", handleTabClick);
 
-  // Navegación directa a las pestañas desde la cabecera
+  // Navegación directa a las pestañas desde la cabecera (por hash al cargar)
   window.addEventListener("DOMContentLoaded", () => {
-    // Verificar si URL tiene hash que coincide con las tabs
     const hash = window.location.hash;
     if (hash === "#experience" || hash === "#education") {
-      // Quitar #
       const tabId = hash.substring(1);
-
-      // Buscar el botón con el atributo data-tab correspondiente
       const button = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
-
-      // Si se encuentra, simular el click
       if (button) {
-        // Set flag para evitar el desplazamiento adicional
         window.isTabNavigationFromHeader = true;
         setTimeout(() => {
           button.click();
-        }, 100); // delay para asegurar que la página se ha cargado completamente
+        }, 100);
+      }
+    }
+  });
+
+  // agregado: activar pestañas cuando se hace clic en enlaces del header (#experience / #education)
+  document.addEventListener("click", (evt) => {
+    const link = evt.target.closest('a[href^="#"]');
+    if (!link) return;
+    const href = link.getAttribute("href");
+    if (href === "#experience" || href === "#education") {
+      const tabId = href.substring(1);
+      const btn = section.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+      if (btn) {
+        window.isTabNavigationFromHeader = true;
+        btn.click();
+      }
+    }
+  });
+
+  // agregado: si cambia el hash (por ejemplo, manualmente), activa la pestaña correspondiente
+  window.addEventListener("hashchange", () => {
+    const h = window.location.hash;
+    if (h === "#experience" || h === "#education") {
+      const tabId = h.substring(1);
+      const btn = section.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+      if (btn) {
+        window.isTabNavigationFromHeader = true;
+        btn.click();
       }
     }
   });

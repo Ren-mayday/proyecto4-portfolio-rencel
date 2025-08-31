@@ -1,3 +1,4 @@
+// Header.js
 import "./Header.css";
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
 
   // Menu items
   const menuItems = [
-    { text: "About Me", href: "#about-me" },
+    { text: "About Me", href: "#about" },
     { text: "Experience", href: "#experience" },
     { text: "Education", href: "#education" },
     { text: "Projects", href: "#projects" },
@@ -30,61 +31,35 @@ const Header = () => {
     // Añadir click event listener para un smooth scrolling con offset
     a.addEventListener("click", (e) => {
       e.preventDefault();
-      const targetId = item.href.substring(1); // Quita el #
+      const targetId = item.href.substring(1); // quita el #
 
-      // Condicional para las tabs
+      // Caso especial: Experience / Education viven en tabs
       if (targetId === "experience" || targetId === "education") {
-        // Selecciona las tabs
         const tabsSection = document.getElementById("experience-education");
-
         if (tabsSection) {
-          // Obtener altura de cabecera para offset
-          const headerHeight = header.offsetHeight;
+          // Scroll al contenedor de las tabs
+          tabsSection.scrollIntoView({ behavior: "smooth", block: "start" });
 
-          // Calcular el target position con offset
-          const targetPosition =
-            tabsSection.getBoundingClientRect().top +
-            window.scrollY -
-            headerHeight;
-
-          // Smooth scroll para las tabs section
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-
-          // Encontrar y clickar la tab button correspondiente después del scrolling
+          // Activar la pestaña correcta después del scroll
           setTimeout(() => {
-            const tabButton = document.querySelector(
-              `.tab-btn[data-tab="${targetId}"]`
-            );
+            const tabButton = document.querySelector(`.tab-btn[data-tab="${targetId}"]`);
             if (tabButton) {
-              // Establece una flag en window para indicar que se trata de una navegación desde la cabecera
               window.isTabNavigationFromHeader = true;
               tabButton.click();
+
+              // Ajuste final: scroll al contenido activo (experience/education)
+              const targetPanel = document.getElementById(targetId);
+              targetPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
             }
-          }, 500); // 500 milisegundos
+          }, 100);
+          return; // salir aquí, no seguir al else
         }
-      } else {
-        // Manejar con normalidad otras navegaciones
-        const targetElement = document.getElementById(targetId);
+      }
 
-        if (targetElement) {
-          // Obtener altura de cabecera para offset
-          const headerHeight = header.offsetHeight;
-
-          // Calcular la posición del objetivo con desplazamiento
-          const targetPosition =
-            targetElement.getBoundingClientRect().top +
-            window.scrollY -
-            headerHeight;
-
-          // Smooth scroll hasta la posición de destino
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-        }
+      // Manejar con normalidad otras navegaciones
+      const target = document.querySelector(item.href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
 

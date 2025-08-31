@@ -1,43 +1,41 @@
 // Education.js
 import "./Education.css";
+import { createEducationItem } from "./createEducationItem.js";
 
 const Education = () => {
-  const container = document.createElement("div");
-  container.className = "education-container";
+  const section = document.createElement("section");
+  section.className = "education-section";
+  section.id = "education"; // agregado para navegación
 
-  /*container.textContent = `💬`;*/
+  const title = document.createElement("h2");
+  title.textContent = "Education";
+
+  const container = document.createElement("div");
+  container.className = "education-container"; //cambiado para el css
 
   const studies = [
+    // createEducationItem espera degree/school/year.
     {
-      title: "Full Stack Developer",
-      school: "The Power MBA - Hackio",
+      degree: "Full Stack Developer",
+      school: "The Power MBA - Tech School",
       year: "2025",
     },
     {
-      title: "Humanities High School Diploma",
+      degree: "Humanities High School Diploma",
       school: "CIDEAD",
       year: "SEP 2011 - MAY 2013",
     },
   ];
 
-  for (const study of studies) {
-    const h3Title = document.createElement("h3");
-    h3Title.className = "studies-title";
-    h3Title.textContent = study.title;
+  studies.forEach((study) => {
+    const item = createEducationItem(study);
+    container.appendChild(item);
+  });
 
-    const h4School = document.createElement("h4");
-    h4School.className = "institution-name";
-    h4School.textContent = study.school;
-    const pYear = document.createElement("p");
-    pYear.className = "promo-year";
-    pYear.textContent = study.year;
+  section.appendChild(title);
+  section.appendChild(container);
 
-    container.appendChild(h3Title);
-    container.appendChild(h4School);
-    container.appendChild(pYear);
-  }
-
-  return container;
+  return section;
 };
 
 export default Education;

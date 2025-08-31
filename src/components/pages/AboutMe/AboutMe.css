@@ -69,9 +69,7 @@ h3 {
 .skill-item:hover .skill-icon-gitHub,
 .skill-item:hover .skill-icon-vite,
 .skill-item:hover .skill-icon-figma {
-  filter: drop-shadow(
-    0 0 8px rgba(255, 255, 255, 0.5)
-  ); /* Enhanced glow on hover */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)); /* Enhanced glow on hover */
 }
 
 .skill-icon-gitHub {
