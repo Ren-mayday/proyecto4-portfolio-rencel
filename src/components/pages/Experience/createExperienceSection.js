@@ -5,7 +5,7 @@ export function createExperienceSection() {
   section.className = "experience-section";
 
   const title = document.createElement("h2");
-  title.textContent = "Experience";
+  title.textContent = "Job Positions";
   section.appendChild(title);
 
   const container = document.createElement("div");

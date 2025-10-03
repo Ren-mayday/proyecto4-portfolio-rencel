@@ -1,41 +1,61 @@
-h2,
-h3 {
-  /* Existing styles */
-  font-size: 1.5rem;
-  margin-bottom: var(--prdc-margin-m);
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
-  text-align: center;
-  color: var(--primary-white);
-  margin: var(--prdc-margin-l);
+/* AboutMe.css */
+
+/* Sección principal */
+.about-me-section {
+  position: relative;
+  padding-top: 2rem; /* margen interno superior */
+  padding-bottom: 2rem;
 }
 
-.my-skills-section {
-  margin: var(--prdc-margin-l);
-}
-.about-me-text {
-  color: var(--primary-white);
-  margin-top: var(--prdc-margin-m);
-  max-width: 800px; /* Limit the maximum width */
-  margin-left: auto; /* Center horizontally */
-  margin-right: auto; /* Center horizontally */
-  line-height: 1.6; /* Improve readability with better line spacing */
+/* Ancla para scroll desde menú nav */
+#about {
+  display: block;
+  scroll-margin-top: 80px; /* altura del header fijo */
 }
 
+/* Contenedor de la sección */
 .section-content {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center all child elements horizontally */
-  margin: var(--prdc-margin-m);
-  padding: var(--prdc-padding-m);
-  max-width: 1200px; /* Limit overall section width */
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  align-items: center;
+  width: 95%;
+  max-width: 100%;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow for wood background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Títulos principales */
+h2,
+h3 {
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary-white);
+  margin: 0 0 0.8rem 0; /* margen inferior menor */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Texto About Me */
+.about-me-text {
+  color: var(--primary-white);
+  max-width: 100%;
+  margin: 0 auto 1rem auto; /* margen inferior menor */
+  padding: 0 0.5rem;
+  text-align: center;
+  line-height: 1.6;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* Sección de skills */
+.my-skills-section {
+  margin: var(--prdc-margin-l);
+}
+
+/* Contenedor de skills */
 .skills-container {
   display: flex;
   justify-content: center;
@@ -43,12 +63,13 @@ h3 {
   gap: var(--prdc-gap-xl);
   flex-wrap: wrap;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.2); /* Very subtle container background */
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   max-width: 900px;
   margin: 0 auto;
 }
 
+/* Iconos de skills */
 .skill-icon-html,
 .skill-icon-css,
 .skill-icon-js,
@@ -58,7 +79,7 @@ h3 {
 .skill-icon-figma {
   width: 50px;
   height: 50px;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); /* Subtle glow */
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
   transition: filter 0.3s ease;
 }
 
@@ -69,13 +90,14 @@ h3 {
 .skill-item:hover .skill-icon-gitHub,
 .skill-item:hover .skill-icon-vite,
 .skill-item:hover .skill-icon-figma {
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)); /* Enhanced glow on hover */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
 }
 
 .skill-icon-gitHub {
   background-color: var(--primary-white);
 }
 
+/* Skill items */
 .skill-item {
   display: flex;
   flex-direction: column;
@@ -83,34 +105,75 @@ h3 {
   gap: 8px;
   transition: transform 0.3s ease;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.4); /* Subtle background */
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 6px;
 }
 
 .skill-item:hover {
   transform: translateY(-5px);
-  background-color: rgba(0, 0, 0, 0.6); /* Darker on hover */
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .skill-name {
   color: var(--primary-white);
   font-weight: 500;
+  font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
+/* Media Queries para tablets y móviles grandes */
 @media (max-width: 768px) {
   .section-content {
-    padding: var(--prdc-padding-s);
+    padding: 0.8rem;
+    width: 95%;
+    max-width: 95%;
   }
 
   .about-me-text {
-    max-width: 90%; /* Narrower on mobile */
+    font-size: 0.95rem;
+    max-width: 95%;
+  }
+
+  h2,
+  h3 {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
   }
 }
 
-@media (max-width: 425px) {
+/* Media Queries para móviles pequeños */
+@media (max-width: 480px) {
+  .section-content {
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-me-text {
+    font-size: 0.9rem;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.4rem;
+  }
+
   .skills-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    gap: var(--prdc-gap-l);
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .skill-icon-html,
+  .skill-icon-css,
+  .skill-icon-js,
+  .skill-icon-vs-code,
+  .skill-icon-gitHub,
+  .skill-icon-vite,
+  .skill-icon-figma {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skill-name {
+    font-size: 0.8rem;
   }
 }

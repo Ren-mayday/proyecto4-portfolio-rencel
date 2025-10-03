@@ -7,7 +7,24 @@
   border-radius: 12px;
   background: rgba(0, 0, 0, 0.15);
 }
+
+.experience-section {
+  scroll-margin-top: 100px; /* Altura aproximada del header */
+}
+
 .experience-section h2 {
   text-align: center;
   margin-bottom: var(--prdc-margin-l);
+}
+
+/* Responsive para Experience */
+@media (max-width: 768px) {
+  .experience-section .experience-container {
+    padding: 1.5rem;
+  }
+
+  .job-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 }

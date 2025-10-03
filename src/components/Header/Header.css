@@ -1,6 +1,7 @@
+/* Contenedor principal del header */
 .main-header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* space-between para mejor distribución */
   align-items: center;
   background-color: var(--primary-black);
   position: fixed;
@@ -8,49 +9,103 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+  padding: 1rem 2rem; /* Padding consistente */
+  box-sizing: border-box; /* Importante para que el padding no afecte el width */
 }
 
+/* Contenedor de navegación */
 .navBar {
   display: flex;
+  z-index: 1001; /* Asegura que el menú quede sobre otros elementos */
 }
 
+/* Lista de links del menú */
 .menu-list {
   display: flex;
-  gap: var(--prdc-gap-l);
+  gap: clamp(1rem, 3vw, 2rem); /* Gap responsive */
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
+/* Título del header */
+.main-header h2 {
   color: var(--primary-white);
-  font-size: 35px;
-  letter-spacing: 4px;
+  font-size: clamp(1.5rem, 4vw, 2.2rem); /* Título responsive */
+  letter-spacing: 2px;
+  margin: 0;
 }
 
-h1:hover {
-  color: var(--green-accent);
-}
-
+/* Estilos de los links */
 a {
   color: var(--primary-white);
-  font-size: 18px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem); /* Links responsive */
+  text-decoration: none; /* Remover subrayado por defecto */
+  transition: color 0.3s ease;
 }
 
-a:hover {
-  color: var(--green-deep);
+/* Hamburguer menu para móviles */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary-white);
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-@media (max-width: 769px) {
+/* Media query para tablets y móviles grandes */
+@media (max-width: 768px) {
   .main-header {
+    flex-direction: row; /* Mantener en fila */
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Menú móvil oculto por defecto */
+  .navBar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-black);
     flex-direction: column;
-    padding-bottom: var(--prdc-padding-m);
+    align-items: center;
+    padding: 1rem 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
   }
-}
 
-@media (max-width: 425px) {
-  .main-header {
-    flex-direction: row;
+  /* Menú desplegado */
+  .navBar.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
   }
+
+  /* Lista de links en columna */
   .menu-list {
     flex-direction: column;
-    gap: var(--prdc-gap-s);
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+/* Media query para móviles pequeños */
+@media (max-width: 480px) {
+  .main-header {
+    padding: 0.8rem 1rem;
+  }
+
+  .main-header h2 {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
   }
 }

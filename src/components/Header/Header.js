@@ -35,41 +35,40 @@ const Header = () => {
 
       // Caso especial: Experience / Education viven en tabs
       if (targetId === "experience" || targetId === "education") {
-        const tabsSection = document.getElementById("experience-education");
-        if (tabsSection) {
-          // Scroll al contenedor de las tabs
-          tabsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-
-          // Activar la pestaña correcta después del scroll
-          setTimeout(() => {
-            const tabButton = document.querySelector(`.tab-btn[data-tab="${targetId}"]`);
-            if (tabButton) {
-              window.isTabNavigationFromHeader = true;
-              tabButton.click();
-
-              // Ajuste final: scroll al contenido activo (experience/education)
-              const targetPanel = document.getElementById(targetId);
-              targetPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-          }, 100);
-          return; // salir aquí, no seguir al else
+        // SOLO activar la pestaña - Tabs.js se encargará del scroll
+        const tabButton = document.querySelector(`.tab-btn[data-tab="${targetId}"]`);
+        if (tabButton) {
+          window.isTabNavigationFromHeader = true;
+          tabButton.click();
+        }
+      } else {
+        // Manejar con normalidad otras navegaciones
+        const target = document.querySelector(item.href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
 
-      // Manejar con normalidad otras navegaciones
-      const target = document.querySelector(item.href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      // Cerrar menú móvil si estaba abierto
+      nav.classList.remove("active");
     });
 
     li.appendChild(a);
     ul.appendChild(li);
   });
 
-  header.appendChild(h2);
-  nav.appendChild(ul);
-  header.appendChild(nav);
+  // Botón hamburguesa
+  const menuToggle = document.createElement("button");
+  menuToggle.className = "menu-toggle";
+  menuToggle.innerHTML = "☰";
+  menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+
+  header.appendChild(h2); // título
+  header.appendChild(nav); // nav con menu-list
+  nav.appendChild(ul); // lista del menú
+  header.appendChild(menuToggle); // botón hamburguesa
 
   return header;
 };

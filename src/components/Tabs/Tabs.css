@@ -1,12 +1,15 @@
 #experience-education {
-  height: 100vh;
-  margin-top: 150px;
+  min-height: 100vh;
+  padding: 0;
+  margin-top: 100px;
 }
 
 .tabs-section {
-  padding: 2rem;
+  padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tabs-container {
@@ -14,97 +17,123 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  width: 100%;
 }
 
 .tab-buttons {
   display: flex;
-  justify-content: center; /* Center the buttons */
+  flex-direction: row;
+  justify-content: center;
   border-bottom: 2px solid var(--green-deep);
+  flex-wrap: nowrap;
 }
 
 .tab-btn {
-  padding: 1rem 2rem;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   font-weight: 500;
   color: var(--primary-white);
   transition: all 0.3s ease;
-}
-
-.tab-btn:hover {
-  color: var(--green-accent);
-  background-color: rgba(0, 145, 110, 0.2);
+  flex: 1;
+  min-width: 0; /* Permite que se encojan */
+  white-space: nowrap;
 }
 
 .tab-btn.active {
+  background: var(--green-deep);
   color: var(--green-bright);
-  border-bottom: 2px solid var(--green-bright);
-  margin-bottom: -2px;
 }
 
 .tab-content {
   display: none;
-  padding: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
   color: var(--primary-white);
 }
 
 .tab-content.active {
   display: block;
+  animation: fadeIn 0.3s ease;
 }
 
-.experience-item,
-.education-item {
-  margin-bottom: 2rem;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .experience-item h3,
 .education-item h3 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
   color: var(--green-bright);
-}
-
-.company,
-.institution {
-  font-weight: 500;
-  color: var(--green-soft);
-  margin: 0.25rem 0;
 }
 
 .date {
   color: var(--green-accent);
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   margin: 0.25rem 0;
 }
 
 .experience-item ul {
   margin: 1rem 0;
-  padding-left: 1.5rem;
+  padding-left: 1rem;
 }
 
 .experience-item li {
   margin: 0.5rem 0;
   color: var(--primary-white);
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
-.education-item .description {
-  margin: 0.5rem 0;
-  color: var(--primary-white);
-}
-
+/* Media Queries */
 @media (max-width: 768px) {
+  #experience-education {
+    margin-top: 80px;
+    padding-top: 20px; /* Espacio extra para seguridad */
+  }
+
   .tabs-section {
-    padding: 1rem;
+    padding: 0.5rem;
+  }
+
+  .tab-buttons {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
   }
 
   .tab-btn {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
+    min-width: 0 !important;
+    padding: 0.8rem 0.3rem !important;
+    font-size: 0.85rem !important;
+    flex-shrink: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-content {
+    padding: 1rem 0.5rem; /* Menos padding */
   }
 
-  .tab-content {
-    padding: 1.5rem;
+  .experience-item,
+  .education-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-btn {
+    font-size: 0.8rem !important;
+    padding: 0.7rem 0.2rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .tab-btn {
+    font-size: 0.75rem !important;
+    padding: 0.6rem 0.1rem !important;
   }
 }

@@ -1,4 +1,4 @@
-import "./Tabs.css";
+/*import "./Tabs.css";
 import Education from "../pages/Education/Education.js";
 import Experience from "../pages/Experience/Experience.js";
 
@@ -36,26 +36,6 @@ const Tabs = () => {
   educationContent.id = "education";
   educationContent.appendChild(Education());
 
-  // Función para hacer scroll a las tabs
-  const performScrollToTabs = () => {
-    const mainHeader = document.querySelector(".main-header");
-    const navBar = document.querySelector(".navBar");
-
-    let totalHeaderHeight = mainHeader.offsetHeight;
-
-    // Si el menú móvil está activo, agregar su altura
-    if (window.innerWidth <= 768 && navBar.classList.contains("active")) {
-      totalHeaderHeight += navBar.offsetHeight;
-    }
-
-    const tabsPosition = section.getBoundingClientRect().top + window.scrollY - totalHeaderHeight;
-
-    window.scrollTo({
-      top: tabsPosition,
-      behavior: "smooth",
-    });
-  };
-
   // Añadir click event listeners a los buttons
   const handleTabClick = (e) => {
     const tabId = e.target.getAttribute("data-tab");
@@ -71,19 +51,19 @@ const Tabs = () => {
       content.classList.remove("active");
     });
 
+    // 🔥 FIX: quitar el # en getElementById
     const targetContent = document.getElementById(tabId);
     if (targetContent) targetContent.classList.add("active");
 
-    // 🔥 CAMBIO: Siempre hacer scroll, pero con diferente lógica si viene del header
-    if (window.isTabNavigationFromHeader) {
-      // Si viene del header, hacer scroll después de un pequeño delay
-      // para asegurar que el contenido esté visible
-      setTimeout(() => {
-        performScrollToTabs();
-      }, 100);
-    } else {
-      // Si viene de clic directo en las tabs, scroll inmediato
-      performScrollToTabs();
+    // Scroll suave a la sección (si no viene desde header)
+    if (!window.isTabNavigationFromHeader) {
+      const headerHeight = document.querySelector(".main-header").offsetHeight;
+      const tabsPosition = section.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+      window.scrollTo({
+        top: tabsPosition,
+        behavior: "smooth",
+      });
     }
 
     window.isTabNavigationFromHeader = false;
@@ -117,20 +97,6 @@ const Tabs = () => {
       const btn = section.querySelector(`.tab-btn[data-tab="${tabId}"]`);
       if (btn) {
         window.isTabNavigationFromHeader = true;
-
-        // Cerrar menú móvil si está abierto
-        if (window.innerWidth <= 768) {
-          const navBar = document.querySelector(".navBar");
-          if (navBar && navBar.classList.contains("active")) {
-            navBar.classList.remove("active");
-            // Pequeño delay para que el menú se cierre antes del scroll
-            setTimeout(() => {
-              btn.click();
-            }, 50);
-            return;
-          }
-        }
-
         btn.click();
       }
     }
@@ -160,4 +126,4 @@ const Tabs = () => {
   return section;
 };
 
-export default Tabs;
+export default Tabs;*/

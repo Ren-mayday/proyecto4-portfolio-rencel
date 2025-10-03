@@ -1,16 +1,14 @@
 #hero {
-  min-height: 45vh;
+  min-height: 100vh; /* 100vh para mejor adaptación */
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Cambié a center para mejor centrado vertical */
   justify-content: center;
-  padding-top: 10vh;
+  padding: 2rem 1rem;
   position: relative;
   overflow: hidden;
-  /* Crear gradient background - 85% black, 15% white */
   background: linear-gradient(135deg, var(--primary-black) 0%, var(--primary-black) 60%, var(--primary-white) 100%);
 }
 
-/* Optional subtle texture overlay */
 #hero::after {
   content: "";
   position: absolute;
@@ -27,18 +25,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--prdc-gap-xl);
+  gap: clamp(1rem, 4vw, 4rem); /* Gap responsive con clamp */
   width: 100%;
   max-width: 1200px;
-  padding: 0 2rem;
-  margin-top: var(--prdc-margin-xxl);
+  padding: 0 1rem; /* Padding reducido en móviles */
   position: relative;
   z-index: 2;
+  flex-wrap: wrap;
+  justify-content: center; /* Centrar contenido en dispositivos pequeños */
 }
 
 .welcome-text {
-  flex: 1;
-  max-width: 550px;
+  flex: 1 1 100%; /* Ocupa todo el ancho en móviles */
+  max-width: 100%;
+  text-align: left;
 }
 
 .title-container {
@@ -50,7 +50,7 @@
 
 .welcome-text h1 {
   color: var(--primary-white);
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
@@ -66,7 +66,7 @@
   color: var(--green-bright);
   padding: 0.4rem 0.8rem;
   border-radius: 50px;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   margin-top: 0.5rem;
 }
 
@@ -79,9 +79,10 @@
 }
 
 .hero-image {
-  width: 350px;
-  height: 350px;
-  object-fit: cover;
+  width: 100%;
+  max-width: 350px; /* Limita tamaño máximo */
+  height: auto; /* Mantiene proporción */
+  object-fit: contain; /* Evita recortes */
   border-radius: 10px;
   position: relative;
   z-index: 2;
@@ -99,7 +100,7 @@
   opacity: 0.7;
 }
 
-/* Hexagon shape option */
+/* Hexagon shape */
 .hexagon-image .hero-image {
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
@@ -111,13 +112,13 @@
 
 .btn-contact-me {
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem);
   text-decoration: none;
   background-color: var(--green-bright);
   color: var(--primary-black);
   border-radius: 40px;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   box-shadow: 0 4px 10px rgba(0, 255, 157, 0.3);
   transition: all 0.3s ease;
 }
@@ -129,22 +130,16 @@
   box-shadow: 0 8px 15px rgba(0, 255, 157, 0.4);
 }
 
+/* Media Queries mejoradas */
 @media (max-width: 900px) {
   .hero-content {
     gap: var(--prdc-gap-l);
   }
 
-  .welcome-text h1 {
-    font-size: 2.2rem;
-  }
-
   .hero-image {
-    width: 300px;
-    height: 300px;
-  }
-
-  .image-container {
-    margin-top: 2rem;
+    max-width: 300px;
+    width: 70vw;
+    height: auto;
   }
 }
 
@@ -152,12 +147,12 @@
   .hero-content {
     flex-direction: column-reverse;
     text-align: center;
-    padding: 2rem 1.5rem;
-    margin: auto;
+    gap: 2rem;
   }
 
   .welcome-text {
     max-width: 100%;
+    text-align: center;
   }
 
   .title-container {
@@ -169,24 +164,46 @@
   }
 
   .hero-image {
-    width: 280px;
-    height: 280px;
+    width: 60vw;
+    max-width: 280px;
+    height: auto;
     margin-bottom: 1.5rem;
+  }
+
+  /* Mantener efectos glow y hexagonales en móviles */
+  .image-container::before {
+    inset: -5px;
+  }
+
+  .hexagon-image::before {
+    inset: -10px;
   }
 }
 
 @media (max-width: 480px) {
+  #hero {
+    padding: 1rem 0.5rem;
+    min-height: 90vh;
+  }
+
+  .hero-content {
+    padding: 0 0.5rem;
+    gap: 1.5rem;
+  }
+
   .welcome-text h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    line-height: 1.3;
   }
 
   .hero-image {
-    width: 250px;
-    height: 250px;
+    width: 80vw;
+    max-width: 250px;
+    height: auto;
   }
 
   .btn-contact-me {
-    padding: 0.9rem 1.8rem;
-    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
   }
 }

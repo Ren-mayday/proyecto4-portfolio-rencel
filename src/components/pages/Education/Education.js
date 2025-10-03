@@ -6,7 +6,7 @@ const Education = () => {
   section.className = "education-section";
 
   const title = document.createElement("h2");
-  title.textContent = "Education";
+  title.textContent = "Education Titles";
 
   const container = document.createElement("div");
   container.className = "education-container";
