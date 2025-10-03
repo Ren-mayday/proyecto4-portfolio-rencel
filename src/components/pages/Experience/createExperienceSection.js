@@ -1,4 +1,4 @@
-import { createExperienceItem } from "./createExperienceItem";
+import { createExperienceItem } from "./createExperienceItem.js";
 
 export function createExperienceSection() {
   const section = document.createElement("section");
@@ -13,16 +13,6 @@ export function createExperienceSection() {
 
   const experiences = [
     {
-      position: "RPA Developer",
-      company: "AMSTRO",
-      year: "AUG 2025 - CURRENT",
-      description: `I’m an RPA Developer specializing in process automation with UiPath, JPA, and SAP, 
-      focused on improving efficiency and optimizing workflows. 
-      With a background in Web Development and customer service, I combine technical skills with a user-centered approach. 
-      I’m currently completing a Full-Stack bootcamp to expand my expertise in RPA, AI, and OCR. 
-      Passionate and adaptable, I aim to create meaningful, future-ready digital solutions.`,
-    },
-    {
       position: "Web Developer Studio/Marketing Services",
       company: "Page Consulting Tech Solutions",
       year: "DEC 2024 - JUN 2025",
@@ -31,6 +21,21 @@ export function createExperienceSection() {
       I troubleshot and resolved web issues to ensure functionality, accessibility, and consistency across devices and browsers. 
       I also collaborated closely with CRM and Web teams to streamline request and translation processes, 
       contributing proactively to both regional and global projects.`,
+    },
+    {
+      position: "Marketplace Content Specialist - SP",
+      company: "Treatwell",
+      year: "APR 2022 - JUL 2024",
+      description: `Created and optimized salon profiles with SEO-friendly content, 
+      managed requests through Salesforce CRM, and collaborated with support teams to resolve technical issues. 
+      Provided product feedback and ensured smooth operations across internal processes.`,
+    },
+    {
+      position: "Tech Support",
+      company: "Photoslurp",
+      year: "NOV 2021 - FEB 2022",
+      description: `Supported clients integrating Photoslurp on e-commerce platforms (Shopify, Magento, PrestaShop, WooCommerce, JavaScript), 
+      troubleshot technical issues, and maintained documentation to ensure seamless adoption.`,
     },
   ];
 

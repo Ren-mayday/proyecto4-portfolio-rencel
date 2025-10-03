@@ -51,12 +51,12 @@ const Tabs = () => {
       content.classList.remove("active");
     });
 
+    // 🔥 FIX: quitar el # en getElementById
     const targetContent = document.getElementById(tabId);
-    targetContent.classList.add("active");
+    if (targetContent) targetContent.classList.add("active");
 
-    // Sólo scroll si no se trata de una navegación de cabecera
+    // Scroll suave a la sección (si no viene desde header)
     if (!window.isTabNavigationFromHeader) {
-      // Scroll en la tab section
       const headerHeight = document.querySelector(".main-header").offsetHeight;
       const tabsPosition = section.getBoundingClientRect().top + window.scrollY - headerHeight;
 
@@ -66,7 +66,6 @@ const Tabs = () => {
       });
     }
 
-    // Reset flag
     window.isTabNavigationFromHeader = false;
   };
 
@@ -88,7 +87,7 @@ const Tabs = () => {
     }
   });
 
-  // agregado: activar pestañas cuando se hace clic en enlaces del header (#experience / #education)
+  // Enlaces del header (#experience / #education)
   document.addEventListener("click", (evt) => {
     const link = evt.target.closest('a[href^="#"]');
     if (!link) return;
@@ -103,7 +102,7 @@ const Tabs = () => {
     }
   });
 
-  // agregado: si cambia el hash (por ejemplo, manualmente), activa la pestaña correspondiente
+  // Si cambia el hash manualmente
   window.addEventListener("hashchange", () => {
     const h = window.location.hash;
     if (h === "#experience" || h === "#education") {

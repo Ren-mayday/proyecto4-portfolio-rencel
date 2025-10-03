@@ -1,8 +1,7 @@
 // src/components/Main/Main.js
 import AboutMe from "../pages/AboutMe/AboutMe.js";
-import Experience from "../pages/Experience/Experience.js";
-import Education from "../pages/Education/Education.js";
 import Projects from "../pages/Projects/Projects.js";
+import Tabs from "../Tabs/Tabs.js";
 
 const Main = () => {
   const main = document.createElement("main");
@@ -10,8 +9,7 @@ const Main = () => {
 
   const sections = [
     ["AboutMe", AboutMe],
-    ["Experience", Experience],
-    ["Education", Education],
+    ["Tabs", Tabs],
     ["Projects", Projects],
   ];
 

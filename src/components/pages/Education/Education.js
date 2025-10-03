@@ -1,20 +1,17 @@
-// Education.js
 import "./Education.css";
 import { createEducationItem } from "./createEducationItem.js";
 
 const Education = () => {
   const section = document.createElement("section");
   section.className = "education-section";
-  section.id = "education"; // agregado para navegación
 
   const title = document.createElement("h2");
   title.textContent = "Education";
 
   const container = document.createElement("div");
-  container.className = "education-container"; //cambiado para el css
+  container.className = "education-container";
 
   const studies = [
-    // createEducationItem espera degree/school/year.
     {
       degree: "Full Stack Developer",
       school: "The Power MBA - Tech School",
