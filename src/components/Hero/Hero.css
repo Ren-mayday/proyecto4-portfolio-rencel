@@ -1,7 +1,7 @@
 #hero {
-  min-height: 100vh; /* 100vh para mejor adaptación */
+  min-height: 100vh;
   display: flex;
-  align-items: center; /* Cambié a center para mejor centrado vertical */
+  align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
   position: relative;
@@ -24,20 +24,18 @@
 .hero-content {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: clamp(1rem, 4vw, 4rem); /* Gap responsive con clamp */
+  justify-content: space-between;
+  gap: clamp(2rem, 4vw, 4rem);
   width: 100%;
   max-width: 1200px;
-  padding: 0 1rem; /* Padding reducido en móviles */
+  padding: 0 2rem;
   position: relative;
   z-index: 2;
-  flex-wrap: wrap;
-  justify-content: center; /* Centrar contenido en dispositivos pequeños */
 }
 
 .welcome-text {
-  flex: 1 1 100%; /* Ocupa todo el ancho en móviles */
-  max-width: 100%;
+  flex: 1;
+  max-width: 600px;
   text-align: left;
 }
 
@@ -50,7 +48,7 @@
 
 .welcome-text h1 {
   color: var(--primary-white);
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
@@ -75,14 +73,17 @@
 }
 
 .image-container {
+  flex: 0 0 auto;
   position: relative;
 }
 
 .hero-image {
   width: 100%;
-  max-width: 350px; /* Limita tamaño máximo */
-  height: auto; /* Mantiene proporción */
-  object-fit: contain; /* Evita recortes */
+  max-width: 400px;
+  min-width: 300px;
+  height: auto;
+  object-fit: cover;
+  object-position: center top;
   border-radius: 10px;
   position: relative;
   z-index: 2;
@@ -100,13 +101,13 @@
   opacity: 0.7;
 }
 
-/* Hexagon shape */
+/* Hexágono vertical - menos recorte superior */
 .hexagon-image .hero-image {
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 .hexagon-image::before {
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   inset: -10px;
 }
 
@@ -130,19 +131,45 @@
   box-shadow: 0 8px 15px rgba(0, 255, 157, 0.4);
 }
 
-/* Media Queries mejoradas */
-@media (max-width: 900px) {
+/* MEDIA QUERY PARA PORTÁTILES (900px - 1200px) */
+@media (min-width: 901px) and (max-width: 1200px) {
   .hero-content {
-    gap: var(--prdc-gap-l);
+    padding: 0 1.5rem;
+    gap: 3rem;
+  }
+
+  .welcome-text {
+    max-width: 500px;
+  }
+
+  .welcome-text h1 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
   }
 
   .hero-image {
-    max-width: 300px;
-    width: 70vw;
-    height: auto;
+    max-width: 350px;
+    min-width: 280px;
   }
 }
 
+/* Tablet landscape y portátiles pequeños */
+@media (max-width: 900px) {
+  .hero-content {
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .hero-image {
+    max-width: 320px;
+    min-width: 250px;
+  }
+
+  .welcome-text h1 {
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+  }
+}
+
+/* Tablet portrait y móviles grandes */
 @media (max-width: 768px) {
   .hero-content {
     flex-direction: column-reverse;
@@ -166,11 +193,11 @@
   .hero-image {
     width: 60vw;
     max-width: 280px;
+    min-width: auto;
     height: auto;
     margin-bottom: 1.5rem;
   }
 
-  /* Mantener efectos glow y hexagonales en móviles */
   .image-container::before {
     inset: -5px;
   }
@@ -180,6 +207,7 @@
   }
 }
 
+/* Móviles pequeños */
 @media (max-width: 480px) {
   #hero {
     padding: 1rem 0.5rem;
