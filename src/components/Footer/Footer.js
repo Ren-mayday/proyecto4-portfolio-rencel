@@ -8,7 +8,8 @@ const Footer = () => {
   divfooter.className = "footer-content";
 
   const pfooter = document.createElement("p");
-  pfooter.innerHTML = "Created by <a href='https://github.com/Ren-mayday?tab=repositories'>Rencel Dayrit Cube</a> ©️"; // Texto temporal
+  pfooter.innerHTML =
+    "Created by <a href='https://github.com/Ren-mayday?tab=repositories'>Rencel Dayrit Cube</a> ©️ <a href='mailto:rencel.dayrit@gmail.com'>email: rencel.dayrit@gmail.com</a>"; // Texto temporal
 
   divfooter.appendChild(pfooter); // Agrega el <p> dentro del div
   footer.appendChild(divfooter); // Agrega el div al footer
